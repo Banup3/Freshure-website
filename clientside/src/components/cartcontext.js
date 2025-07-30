@@ -2,29 +2,29 @@ import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
 export const CartContext = createContext();
+const API_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [userId, setUserId] = useState(null);
 
-  // ✅ Load user on mount
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user && user._id) {
       setUserId(user._id);
     } else {
       setUserId(null);
-      setCartItems([]); // Clear cart if no user
+      setCartItems([]);
     }
   }, []);
 
-  // ✅ Fetch cart from backend
+  // ✅ Fetch Cart
   useEffect(() => {
     if (!userId) return;
 
     const fetchCart = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+        const res = await axios.get(`${API_URL}/api/cart/${userId}`);
         setCartItems(res.data.items || []);
       } catch (err) {
         console.error("❌ Error fetching cart:", err);
@@ -34,14 +34,23 @@ export const CartProvider = ({ children }) => {
     fetchCart();
   }, [userId]);
 
-  // ✅ Save cart to backend when cartItems change
+  // ✅ Auto-save Cart
   useEffect(() => {
     if (!userId) return;
 
-    axios.post('http://localhost:5000/api/cart', {
-      userId,
-      items: cartItems,
-    }).catch(err => console.error("❌ Error saving cart:", err));
+    const saveCart = async () => {
+      try {
+        await axios.post(`${API_URL}/api/cart`, {
+          userId,
+          items: cartItems,
+        });
+        console.log("✅ Cart auto-saved");
+      } catch (err) {
+        console.error("❌ Error saving cart:", err);
+      }
+    };
+
+    saveCart();
   }, [cartItems, userId]);
 
   const addToCart = (item) => {
@@ -69,7 +78,7 @@ export const CartProvider = ({ children }) => {
     if (!userId) return;
 
     try {
-      await axios.post('http://localhost:5000/api/cart', {
+      await axios.post(`${API_URL}/api/cart`, {
         userId,
         items: cartItems,
       });

@@ -14,7 +14,6 @@ function Snacks() {
     addToCart({ ...item, quantity });
     setMessage(`${item.name} added to cart`);
 
-    // Reset message after 2 seconds
     setTimeout(() => setMessage(''), 2000);
   };
 

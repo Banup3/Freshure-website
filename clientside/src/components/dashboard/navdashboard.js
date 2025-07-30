@@ -12,11 +12,11 @@ const Dashboardnav = () => {
 
   const handleLogout = async () => {
   try {
-    await saveCartToBackend();     // ✅ Save cart before clearing
-    clearCart();                   // ✅ Clear in-memory cart
+    await saveCartToBackend();     
+    clearCart();                   
     localStorage.removeItem("user");
-         // ✅ Now clear localStorage
-    navigate("/login");            // ✅ Redirect after everything is done
+         
+    navigate("/login");            
   } catch (error) {
     console.error("Error during logout:", error);
     alert("Logout failed. Try again.");
@@ -39,7 +39,7 @@ const Dashboardnav = () => {
         backgroundColor: "rgba(189, 219, 188, 0.6)",
         backdropFilter: "blur(5px)",
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-        zIndex: "10",
+        zIndex: "100",
         top:"0"
       }}
     >
@@ -62,7 +62,7 @@ const Dashboardnav = () => {
           <li className="nav-item">
             <div className="profile" onClick={handleProfileClick} style={{ cursor: 'pointer' }}>
               <div className="avatar bg-dark text-white rounded-circle d-flex justify-content-center align-items-center" style={{ width: '40px', height: '40px' }}>
-                ZU
+                You
               </div>
             </div>
             {profiledropdown && (

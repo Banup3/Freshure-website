@@ -15,7 +15,6 @@ function Curry() {
     addToCart({ ...outlet, quantity });
     setMessage(`${outlet.name} added to cart`);
 
-    // Reset message after 2 seconds
     setTimeout(() => setMessage(''), 2000);
   };
 
@@ -66,16 +65,7 @@ function Curry() {
                     <button className="btn btn-outline-secondary btn-sm" onClick={() => increaseQty(outlet.id)}>+</button>
                   </div>
           <button style={{width:"75px",borderRadius:'25px',position:'relative',left:"35%"}}onClick={() => handleAdd(outlet)}>add</button>
-           {/* <button className="btn btn-outline-secondary btn-sm" onClick={() => decreaseQty(outlet.id)}>-</button>
-                    <span className="mx-2">{quantities[outlet.id] || 1}</span>
-                    <button className="btn btn-outline-secondary btn-sm" onClick={() => increaseQty(outlet.id)}>+</button>
-                  </div>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => handleAdd(outlet)}
-                  >
-                    Add
-                  </button> */}
+    
                   </div>
         </div>
     ))}

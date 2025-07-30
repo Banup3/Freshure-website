@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Footer from './components/footer/footer';
-import { CartContext } from './components/cartcontext'; // adjust path if needed
+import { CartContext } from './components/cartcontext'; 
+
+const API_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const Checkout = () => {
   const location = useLocation();
-  const { cartItems } = useContext(CartContext); // Get all items from cart
+  const { cartItems } = useContext(CartContext); 
   const baseTotal = location.state?.totalAmount || 0;
 
   const [finalAmount, setFinalAmount] = useState(baseTotal);
@@ -28,7 +31,7 @@ const Checkout = () => {
     }
   });
 
-  // 🍹 Buy 2 Get 1 Free on Juices (based on total juice count)
+  // Buy 2 Get 1 Free on Juices 
   let totalJuiceQty = juiceItems.reduce((sum, item) => sum + item.quantity, 0);
   let freeJuices = Math.floor(totalJuiceQty / 3);
   let juiceDiscount = 0;
@@ -48,7 +51,7 @@ const Checkout = () => {
     subtotal -= juiceDiscount;
   }
 
-  // 🛍 20% OFF on First Order
+  //  20% OFF on First Order
   const isFirstOrder = true; // Replace with actual user check
   let firstOrderDiscount = 0;
   if (isFirstOrder) {
@@ -56,7 +59,7 @@ const Checkout = () => {
     subtotal -= firstOrderDiscount;
   }
 
-  // 🚚 Free Delivery over ₹299
+  //  Free Delivery over ₹299
   let delivery = 0;
   if (subtotal >= 299) {
     delivery = 0;
@@ -77,12 +80,12 @@ const Checkout = () => {
 
 
   const handlePayment = async () => {
-    const res = await fetch("http://localhost:5000/api/create-order", {
+    const res = await fetch(`${API_URL}/api/payment/create-order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: finalAmount * 100 }) // Convert to paise
+      body: JSON.stringify({ amount: finalAmount  }) // Convert to paise
     });
 
     if (!res.ok) {

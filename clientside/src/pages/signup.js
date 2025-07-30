@@ -5,6 +5,9 @@ import Footer from '../components/footer/footer';
 import './login.css'
 import axios from 'axios';
 
+
+const API_URL = process.env.REACT_APP_API_BASE_URL;
+
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,7 +18,7 @@ function Signup() {
   e.preventDefault();
 
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/register', {
+    const res = await axios.post(`${API_URL}/api/auth/register`, {
       name: email.split("@")[0], // just using email prefix as name
       email,
       password,

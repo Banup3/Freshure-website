@@ -19,7 +19,7 @@ import Checkout from './checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <CartProvider> {/* ✅ Wrap your entire app */}
+  <CartProvider> 
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />

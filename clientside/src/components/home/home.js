@@ -9,6 +9,7 @@ function Home() {
         <>
         <Homenav/>
         <div className='w-100'>
+          <div className='videocontainer'>
             <video
   src="/assets/floating-fresh-organic-fruits-underwater-in-super-slow-motion-close-up-tasty-s-SBV-347214737-preview_1747025053396_GStory_1747025272963.mp4"
   autoPlay
@@ -19,8 +20,13 @@ function Home() {
     width: "100%", 
     objectFit: "cover",
     display: "block", 
-  }}
-/>  
+  }}/>
+  <div class="overlay-text">
+    <h1 style={{fontSize:'5rem'}}>Freshure</h1>
+    <p>Delivering Freshness, One Click at a Time.</p>
+  </div>
+  
+</div>
         <div style={{ position: 'relative', textAlign: 'center', color: 'white' }}>
   <img
     src="assets/immunity-boosting-food-healthy-lifestyle-with-citrus.jpg"

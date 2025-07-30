@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Dashboardnav from './navdashboard';
 import DashboardTabs from './dashboardtabs';
-import CategoryList from './categorylist'; // This should render based on tab
+import CategoryList from './categorylist'; 
 import Juices from './juices';
 import Fruits from './fruits';
 import Vegetables from './vegetables';
@@ -12,7 +12,7 @@ function Dashboard() {
   const [activeTab, setActiveTab] = useState("Food Items");
   const user = JSON.parse(localStorage.getItem('user'));
 
-console.log("Logged in as:", user?.name); // or user.email
+console.log("Logged in as:", user?.name); 
 
 
   return (

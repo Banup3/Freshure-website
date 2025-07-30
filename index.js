@@ -40,7 +40,7 @@ app.post("/api/create-order", async (req, res) => {
 // Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/products", require("./routes/products"));
-app.use("/api/payment", require("./routes/payments")); // if used
+app.use("/api/payment", require("./routes/payments")); 
 
 const cartRoutes = require('./routes/cart');
 app.use('/api/cart', require("./routes/cart"));
@@ -52,5 +52,5 @@ app.use("/api/orders", orderRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(` Server running at http://localhost:${PORT}`);
 });

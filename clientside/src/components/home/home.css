@@ -6,3 +6,24 @@
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #090303;
+  text-align: center;
+  padding: 20px;
+  font-size: 100px;
+  /* //background: rgba(0, 0, 0, 0.4); semi-transparent background */
+  border-radius: 10px;
+}
+
+.overlay-text h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.overlay-text p {
+  font-size: 1.2rem;
+}
