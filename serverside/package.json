@@ -5,6 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
+    "build":"cd ../clientside && npm install && npm run build && cp -r build ../serverside/build",
     "dev": "nodemon index.js"
   },
   "dependencies": {
