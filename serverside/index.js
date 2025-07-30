@@ -7,6 +7,10 @@ const connectDB = require("./config/db");
 dotenv.config();
 connectDB();
 
+
+console.log("RAZORPAY_KEY_ID:", process.env.RAZORPAY_KEY_ID);
+
+
 const app = express();
 app.use(cors());
 app.use(express.json()); // preferred over bodyParser.json()
@@ -17,6 +21,7 @@ app.use(express.json()); // preferred over bodyParser.json()
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 // });
+console.log("KEY_ID:", process.env.RAZORPAY_KEY_ID);
 
 
 // Razorpay instance
@@ -55,21 +60,21 @@ app.use('/api/cart', require("./routes/cart"));
 
 const orderRoutes = require("./routes/orders");
 app.use("/api/orders", orderRoutes);
-app.post("/api/create-order", async (req, res) => {
-  try {
-    const { amount } = req.body;
-    const options = {
-      amount, // already multiplied in frontend
-      currency: "INR",
-      receipt: `receipt_${Date.now()}`,
-    };
-    const order = await razorpay.orders.create(options);
-    res.json(order);
-  } catch (err) {
-    console.error("❌ Razorpay order error:", err);
-    res.status(500).json({ error: "Something went wrong" });
-  }
-});
+// app.post("/api/create-order", async (req, res) => {
+//   try {
+//     const { amount } = req.body;
+//     const options = {
+//       amount, // already multiplied in frontend
+//       currency: "INR",
+//       receipt: `receipt_${Date.now()}`,
+//     };
+//     const order = await razorpay.orders.create(options);
+//     res.json(order);
+//   } catch (err) {
+//     console.error("❌ Razorpay order error:", err);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'build')));
 

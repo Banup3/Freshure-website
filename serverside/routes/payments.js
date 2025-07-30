@@ -2,10 +2,12 @@
 const Razorpay = require('razorpay');
 const express = require('express');
 const router = express.Router();
+require('dotenv').config(); // 👈 add this at the top
+
 
 const razorpay = new Razorpay({
-  key_id: 'rzp_test_i1oS1yqKdDOA3v',
-  key_secret: '47CNoESLnqsTjwuRJrW34cW9',
+  key_id:  process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
 router.post('/create-order', async (req, res) => {
