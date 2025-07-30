@@ -1,1 +1,2 @@
-# Freshure
+
+# Freshure – Mini E-commerce Website
