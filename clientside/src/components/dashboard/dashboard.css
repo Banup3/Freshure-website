@@ -1,0 +1,98 @@
+/* .tabs-container {
+  padding-top: 20px; 
+  margin-top: 10px;
+  display: flex;
+  gap: 30px;
+  padding-left: 25px;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: 500;
+
+  margin-top: 110px;
+  padding: 0 1rem;
+  gap: 20px;
+
+} */
+.tabs-container {
+  margin-top: 100px; /* Enough space to clear the fixed navbar */
+  display: flex;
+  flex-wrap: wrap; /* Allows tabs to stack on small screens */
+  gap: 20px;
+  padding: 0 1rem 1rem 1.5rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: 500;
+  background: white; /* Optional: Keeps it visible over bg */
+  z-index: 1;
+  position: relative;
+}
+
+
+/* 
+.tab-item {
+  position: relative;
+  color: #555;
+  cursor: pointer;
+  padding-bottom: 10px;
+  padding-bottom: 6px;
+}
+
+.tab-item.active {
+  color: black;
+   border-bottom: 3px solid orange;
+  font-weight: bold;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 3px;
+  background-color: orange;
+  border-radius: 2px;
+} */
+ .tab-item {
+  position: relative;
+  color: #555;
+  cursor: pointer;
+  padding-bottom: 6px;
+}
+
+.tab-item.active {
+  color: black;
+  font-weight: bold;
+  border-bottom: 3px solid orange; /* fallback */
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 3px;
+  background-color: orange;
+  border-radius: 2px;
+}
+@media (max-width: 480px) {
+  .tabs-container {
+    margin-top: 180px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 16px;
+  }
+
+  .tab-item {
+    width: 100%;
+    padding-bottom: 4px;
+  }
+
+  .tab-item.active::after {
+    width: 100%;
+  }
+}
+
+

@@ -1,0 +1,26 @@
+.popular-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.cuisine-list {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  gap: 25px;
+  padding: 10px 0;
+}
+
+.cuisine-item {
+  text-align: center;
+  min-width: 100px;
+}
+
+.cuisine-item img {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f2f2f2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
