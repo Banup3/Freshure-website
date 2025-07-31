@@ -1,8 +1,8 @@
-// routes/payment.js
+
 const Razorpay = require('razorpay');
 const express = require('express');
 const router = express.Router();
-require('dotenv').config(); // 👈 add this at the top
+require('dotenv').config(); 
 
 
 const razorpay = new Razorpay({
@@ -10,9 +10,9 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-router.post('/create-order', async (req, res) => {
+router.post('/orders', async (req, res) => {
   const options = {
-    amount: req.body.amount , // convert to paise
+    amount: req.body.amount , 
     currency: 'INR',
     receipt: `receipt_${Date.now()}`,
   };

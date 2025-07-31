@@ -60,7 +60,7 @@ app.use('/api/cart', require("./routes/cart"));
 
 const orderRoutes = require("./routes/orders");
 app.use("/api/orders", orderRoutes);
-app.post("/api/create-order", async (req, res) => {
+app.post("/api/payment/ordersr", async (req, res) => {
   try {
     const { amount } = req.body;
     const options = {
